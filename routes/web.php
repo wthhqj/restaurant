@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['prefix'=>'test'],function(){
+    Route::get('user/test',function (){
+        return response('asdsa');
+    });
+});

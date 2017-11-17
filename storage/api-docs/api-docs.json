@@ -1,0 +1,365 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "\u8ba2\u5355\u7cfb\u7edf",
+        "version": "v0.0.1"
+    },
+    "paths": {
+        "/lsx/public/index.php/rest/v1/food/add": {
+            "post": {
+                "tags": [
+                    "\u83dc\u54c1\u6a21\u5757"
+                ],
+                "summary": "\u65b0\u589e/\u66f4\u65b0\u83dc\u54c1\u63a5\u53e3",
+                "description": "\u65b0\u589e/\u66f4\u65b0\u83dc\u54c1",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "foodId",
+                        "in": "formData",
+                        "description": "\u83dc\u54c1id\uff0c\u4e0d\u4f20\u4e3a\u65b0\u589e\uff0c\u4f20\u4e86\u4e3a\u66f4\u65b0",
+                        "type": "string"
+                    },
+                    {
+                        "name": "title",
+                        "in": "formData",
+                        "description": "\u83dc\u540d",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "img",
+                        "in": "formData",
+                        "description": "\u56fe\u7247",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "in": "formData",
+                        "description": "\u7c7b\u522b",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "price",
+                        "in": "formData",
+                        "description": "\u4ef7\u683c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "offprice",
+                        "in": "formData",
+                        "description": "\u6298\u6263\u4ef7",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "status",
+                        "in": "formData",
+                        "description": "\u72b6\u6001",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f"
+                    }
+                }
+            }
+        },
+        "/lsx/public/index.php/rest/v1/food/del": {
+            "post": {
+                "tags": [
+                    "\u83dc\u54c1\u6a21\u5757"
+                ],
+                "summary": "\u5220\u9664\u83dc\u54c1",
+                "description": "\u5220\u9664\u83dc\u54c1",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "foodId",
+                        "in": "formData",
+                        "description": "\u5220\u9664\u83dc\u54c1",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f"
+                    }
+                }
+            }
+        },
+        "/lsx/public/index.php/rest/v1/food/status": {
+            "post": {
+                "tags": [
+                    "\u83dc\u54c1\u6a21\u5757"
+                ],
+                "summary": "\u4fee\u6539\u83dc\u54c1\u72b6\u6001",
+                "description": "\u4fee\u6539\u83dc\u54c1\u72b6\u6001",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "foodId",
+                        "in": "formData",
+                        "description": "\u83dc\u54c1id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "status",
+                        "in": "formData",
+                        "description": "\u72b6\u6001onshelf/offshelf",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f"
+                    }
+                }
+            }
+        },
+        "/lsx/public/index.php/rest/v1/food/search": {
+            "get": {
+                "tags": [
+                    "\u83dc\u54c1\u6a21\u5757"
+                ],
+                "summary": "\u83b7\u53d6\u83dc\u54c1\u5217\u8868",
+                "description": "\u83b7\u53d6\u83dc\u54c1\u5217\u8868\uff0c\u53ef\u4ee5\u6839\u636etitle\u6216type\u6a21\u7cca\u67e5\u8be2",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "formData",
+                        "description": "\u83b7\u53d6\u7b2c\u51e0\u9875\u6570\u636e",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "formData",
+                        "description": "\u6bcf\u9875\u591a\u5c11\u6761\u6570\u636e",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "title",
+                        "in": "formData",
+                        "description": "\u83dc\u54c1\u540d\u79f0",
+                        "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "in": "formData",
+                        "description": "\u83dc\u54c1\u7c7b\u578b",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f"
+                    }
+                }
+            }
+        },
+        "/lsx/public/index.php/rest/v1/food/list": {
+            "get": {
+                "tags": [
+                    "\u83dc\u54c1\u6a21\u5757"
+                ],
+                "summary": "\u83b7\u53d6\u5df2\u4e0a\u67b6\u83dc\u54c1\u5217\u8868",
+                "description": "\u83b7\u53d6\u5df2\u4e0a\u67b6\u83dc\u54c1\u5217\u8868(status==1)",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "formData",
+                        "description": "\u83b7\u53d6\u7b2c\u51e0\u9875\u6570\u636e",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "formData",
+                        "description": "\u6bcf\u9875\u591a\u5c11\u6761\u6570\u636e",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f"
+                    }
+                }
+            }
+        },
+        "/lsx/public/index.php/rest/v1/user/add": {
+            "post": {
+                "tags": [
+                    "\u7528\u6237\u6a21\u5757"
+                ],
+                "summary": "\u589e\u52a0/\u66f4\u65b0\u5458\u5de5",
+                "description": "\u589e\u52a0/\u66f4\u65b0\u5458\u5de5\uff0c\u6709employeeid\u4e3a\u66f4\u65b0\uff0c\u6ca1\u6709\u4e3a\u65b0\u589e",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "\u5458\u5de5\u59d3\u540d",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "age",
+                        "in": "formData",
+                        "description": "\u5458\u5de5\u5e74\u9f84",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mobile",
+                        "in": "formData",
+                        "description": "\u624b\u673a\u53f7",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "salary",
+                        "in": "formData",
+                        "description": "\u85aa\u8d44",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pwd",
+                        "in": "formData",
+                        "description": "\u5bc6\u7801",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "avatar",
+                        "in": "formData",
+                        "description": "\u5934\u50cfurl",
+                        "type": "string"
+                    },
+                    {
+                        "name": "employeeid",
+                        "in": "formData",
+                        "description": "\u7528\u6237id\uff0c\u82e5\u4f20\u4e86\u8fd9\u4e2a\u53c2\u6570\uff0c\u5219\u4e3a\u66f4\u65b0\uff0c\u4e0d\u4f20\u5219\u4e3a\u65b0\u589e\u7528\u6237",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f"
+                    }
+                }
+            }
+        },
+        "/lsx/public/index.php/rest/v1/user/del": {
+            "post": {
+                "tags": [
+                    "\u7528\u6237\u6a21\u5757"
+                ],
+                "summary": "\u5220\u9664\u7528\u6237\u63a5\u53e3",
+                "description": "\u901a\u8fc7\u7528\u6237id\u5220\u9664\u7528\u6237\u63a5\u53e3",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "employeeId",
+                        "in": "formData",
+                        "description": "\u7528\u6237id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f"
+                    }
+                }
+            }
+        },
+        "/lsx/public/index.php/rest/v1/user/login": {
+            "post": {
+                "tags": [
+                    "\u7528\u6237\u6a21\u5757"
+                ],
+                "summary": "\u767b\u9646\u63a5\u53e3",
+                "description": "\u53d1\u9001\u96c7\u5458id\u548c\u5bc6\u7801\uff0c\u8fd4\u56detoken",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "employeeid",
+                        "in": "formData",
+                        "description": "\u96c7\u5458id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pwd",
+                        "in": "formData",
+                        "description": "\u5bc6\u7801",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f"
+                    }
+                }
+            }
+        },
+        "/lsx/public/index.php/rest/v1/user": {
+            "get": {
+                "tags": [
+                    "\u7528\u6237\u6a21\u5757"
+                ],
+                "summary": "\u83b7\u53d6\u4e2a\u4eba\u4fe1\u606f\u63a5\u53e3",
+                "description": "\u83b7\u53d6\u4e2a\u4eba\u4fe1\u606f\u63a5\u53e3\uff0c\u5982\u679ctoken\u5931\u6548\u5219\u4f1a\u8fd4\u56deHTTP CODE 500",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "formData",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}
