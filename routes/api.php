@@ -38,7 +38,8 @@ $api->version('v1', function ($api) {
         /**获取上架的菜品列表*/
         $api->get('food/list', ['as'=>'food.list', 'uses' => 'FoodController@getList']);
 
-        /**获取空桌号?*/
+        /**获取空桌号*/
+        /**获取订单*/
     });
 });
 
