@@ -39,8 +39,6 @@ $api->version('v1', function ($api) {
         $api->get('food/list', ['as'=>'food.list', 'uses' => 'FoodController@getList']);
 
         /**获取空桌号*/
-        /**获取订单*/
-        //
     });
 });
 
