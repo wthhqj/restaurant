@@ -134,12 +134,12 @@ class OrderController extends Controller
     {
         $page = $request->input('page', 1);
         $perPage = $request->input('limit', 10);
-        $st = $request->input('st', date('Y-m-d H:i:s',strtotime("-10 day")));
+        $st = $request->input('st', date('Y-m-d H:i:s',strtotime("-1 day")));
         $et = $request->input('et', date('Y-m-d H:i:s'));
         $orders = Order::select('id as orderId', 'desk_id as deskId',
             'employee', 'money', 'status', 'created_at as timestamp')
             ->where('created_at', '>=', $st)->where('created_at', '<', $et)->get();
-        return $this->response->array([$orders]);
+        return $this->response->array(['code'=>200, 'items'=>$orders]);
     }
 
     /**

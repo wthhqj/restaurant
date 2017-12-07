@@ -350,7 +350,7 @@ class UserController extends Controller
     /**
      * 上传用户头像
      * 上传用户头像
-     * @SWG\Get(
+     * @SWG\Post(
      * path="/img/upload",
      * tags={"用户模块"},
      * summary="上传用户头像跟在url后面的描述",
@@ -361,6 +361,13 @@ class UserController extends Controller
      * name="img",
      * type="file",
      * description="上传的文件",
+     * required=true,
+     * ),
+     * @SWG\Parameter(
+     * in="query",
+     * name="token",
+     * type="string",
+     * description="用户token",
      * required=true,
      * ),
      * @SWG\Response(

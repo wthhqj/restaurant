@@ -323,7 +323,7 @@ class FoodController extends Controller
         if ($validator->fails()) {
             return response()->json(['code' => 40401, 'msg' => "参数错误"]);
         }
-
+;
         $foods = Food::where('status', 1)->get()
             ->forPage($request->input('page'), $request->input('limit'));
         $allPage = Food::where('status', 1)->count();
