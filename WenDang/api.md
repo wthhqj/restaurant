@@ -91,6 +91,24 @@ FORMAT: 1A
 
             []
 
+## 获取员工列表
+获取员工列表 [POST /user/status]
+
+
++ Request (application/json)
+    + Body
+
+            {
+                "employeeId": "101"
+            }
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "code": 200
+            }
+
 # 菜品模块 [/food]
 
 ## 新增/更新菜品
@@ -167,6 +185,82 @@ FORMAT: 1A
 
 ## 获取已上架菜品列表
 获取已上架菜品列表(status==1) [POST /food/list]
+
+
++ Request (application/json)
+    + Body
+
+            {
+                "employeeId": "101"
+            }
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "code": 200
+            }
+
+# 座位模块 [/v1/desk]
+
+## 获取全部空座的id
+获取全部空座的id [POST /v1/desk]
+
+
++ Request (application/json)
+    + Body
+
+            {
+                "employeeId": "101"
+            }
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "code": 200
+            }
+
+# 订单模块 [/v1/order]
+
+## 下单接口
+下单接口 [POST /v1/order/add]
+
+
++ Request (application/json)
+    + Body
+
+            {
+                "employeeId": "101"
+            }
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "code": 200
+            }
+
+## 获取订单列表
+获取订单列表,需要传递页数，每页条数，起始时间和结束时间,都是可选参数有默认值 [POST /v1/order/list]
+
+
++ Request (application/json)
+    + Body
+
+            {
+                "employeeId": "101"
+            }
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "code": 200
+            }
+
+## 获取订单详情
+获取订单详情 [POST /v1/order/detail]
 
 
 + Request (application/json)

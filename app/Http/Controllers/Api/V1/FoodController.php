@@ -17,7 +17,7 @@ class FoodController extends Controller
      * 新增/更新菜品
      * 新增/更新菜品接口
      * @SWG\Post(
-     * path="/lsx/public/index.php/rest/v1/food/add",
+     * path="/lsx/public/index.php/v1/food/add",
      * tags={"菜品模块"},
      * summary="新增/更新菜品接口",
      * description="新增/更新菜品",
@@ -119,7 +119,7 @@ class FoodController extends Controller
      * 删除菜品
      * 根据菜品id删除菜品
      * @SWG\Post(
-     * path="/lsx/public/index.php/rest/v1/food/del",
+     * path="/lsx/public/index.php/v1/food/del",
      * tags={"菜品模块"},
      * summary="删除菜品",
      * description="删除菜品",
@@ -160,7 +160,7 @@ class FoodController extends Controller
      * 修改菜品状态
      * 修改菜品状态
      * @SWG\Post(
-     * path="/lsx/public/index.php/rest/v1/food/status",
+     * path="/lsx/public/index.php/v1/food/status",
      * tags={"菜品模块"},
      * summary="修改菜品状态",
      * description="修改菜品状态",
@@ -212,33 +212,33 @@ class FoodController extends Controller
      * 搜索菜品
      * 搜索菜品，可以根据title或type模糊查询
      * @SWG\Get(
-     * path="/lsx/public/index.php/rest/v1/food/search",
+     * path="/lsx/public/index.php/v1/food/search",
      * tags={"菜品模块"},
      * summary="获取菜品列表",
      * description="获取菜品列表，可以根据title或type模糊查询",
      * produces={"application/json"},
      * @SWG\Parameter(
-     * in="formData",
+     * in="query",
      * name="page",
      * type="number",
      * description="获取第几页数据",
      * required=true,
      * ),
      * @SWG\Parameter(
-     * in="formData",
+     * in="query",
      * name="limit",
      * type="number",
      * description="每页多少条数据",
      * required=true,
      * ),
      * @SWG\Parameter(
-     * in="formData",
+     * in="query",
      * name="title",
      * type="string",
      * description="菜品名称",
      * ),
      * @SWG\Parameter(
-     * in="formData",
+     * in="query",
      * name="type",
      * type="string",
      * description="菜品类型",
@@ -282,20 +282,20 @@ class FoodController extends Controller
      * 获取已上架菜品列表
      * 获取已上架菜品列表(status==1)
      * @SWG\Get(
-     * path="/lsx/public/index.php/rest/v1/food/list",
+     * path="/lsx/public/index.php/v1/food/list",
      * tags={"菜品模块"},
      * summary="获取已上架菜品列表",
      * description="获取已上架菜品列表(status==1)",
      * produces={"application/json"},
      * @SWG\Parameter(
-     * in="formData",
+     * in="query",
      * name="page",
      * type="number",
      * description="获取第几页数据",
      * required=true,
      * ),
      * @SWG\Parameter(
-     * in="formData",
+     * in="query",
      * name="limit",
      * type="number",
      * description="每页多少条数据",

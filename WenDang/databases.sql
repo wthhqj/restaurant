@@ -41,11 +41,12 @@ PRIMARY KEY (`id`)
 
 CREATE TABLE `orders`(
 `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-`disk_id` INT(8) NOT NULL COMMENT'桌号',
+`desk_id` INT(8) NOT NULL COMMENT'桌号',
 `employee` VARCHAR(64) NOT NULL COMMENT'员工真实姓名',
 `money` FLOAT(10,2) NOT NULL COMMENT'总金额',
-`status` TINYINT NOT NULL DEFAULT 1 COMMENT'1：未付款，2：已付款， 3：已取消',
+`status` TINYINT NOT NULL DEFAULT 1 COMMENT'1：未付款，2：已付款， 3：已取消 , 4:已结账??',
 `cart_list` TEXT COMMENT'订单详情[["id":"",title:"",url:"",unitprice:"单价",quantity:"数量",total:"总价"]] 表层数组，底层由LaravelORM转为字符串',
+`date_str` VARCHAR(16) NOT NULL COMMENT'下单日期YYYY-mm-dd格式',
 `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
 `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
 `deleted_at` TIMESTAMP NULL DEFAULT NULL,

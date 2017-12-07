@@ -9,8 +9,9 @@ class Order extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'desks';
+    protected $table = 'orders';
     protected $dates = ['deleted_at'];
+    protected $hidden = ['deleted_at', 'updated_at'];
 
     protected $casts = [
         'cart_list' => 'array',
