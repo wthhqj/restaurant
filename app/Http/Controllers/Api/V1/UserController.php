@@ -105,7 +105,6 @@ class UserController extends Controller
             'age' => 'required|max:200',
             'mobile' => 'required|max:11',
             'salary' => 'required',
-            'pwd' => 'required'
         ]);
         if ($validator->fails()) {
             return response()->json(['code' => 40401, 'msg' => "缺少必要参数"]);
@@ -115,10 +114,11 @@ class UserController extends Controller
         if(!preg_match("/^1[34578]{1}\d{9}$/",$request->input('mobile'))){
             return $this->response->array(array('code'=>40301, 'msg'=>'手机号格式错误'));
         }
-        if ($request->has('employeeid') ) {
+        if ($request->has('employeeId') ) {
             $user = User::find($request->input('employeeid'));
         } else {
             $user = new User();
+            $user->password = '123456';
         }
 
         $user->mobile = $request->input('mobile');
@@ -128,7 +128,6 @@ class UserController extends Controller
         // $user->avatar = asset('storage/upload/defaultheadimg.png');
         $user->avatar = "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif";
         $user->role = array('employee');
-        $user->password = md5($request->input('pwd'));
         $user->save();
         return $this->response->array(array('code'=>200, 'id'=>$user->id));
     }
@@ -386,7 +385,7 @@ class UserController extends Controller
      */
     public function imgUpload(Request $request)
     {
-        $this->jwtAuth();
+        // $this->jwtAuth();
         $file = $request->file('img');
         if ($file->getMimeType() != 'image/jpeg') {
             $this->response->errorForbidden('错误的文件类型');
@@ -396,7 +395,6 @@ class UserController extends Controller
         }
         $path = $file->store('public/upload');
         $path = str_replace('public', 'storage', $path);
-        echo asset($path). "\r\n";
         return $this->response->array(['code'=>200, 'url'=>asset($path)]);
     }
 }
