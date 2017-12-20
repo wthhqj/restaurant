@@ -127,7 +127,7 @@ class UserController extends Controller
         $user->salary = $request->input('salary');
         // $user->avatar = asset('storage/upload/defaultheadimg.png');
         $user->avatar = "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif";
-        $user->role = array('admin');
+        $user->role = array('employee');
         $user->password = md5($request->input('pwd'));
         $user->save();
         return $this->response->array(array('code'=>200, 'id'=>$user->id));
