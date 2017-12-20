@@ -358,7 +358,7 @@ class UserController extends Controller
      * produces={"application/json"},
      * @SWG\Parameter(
      * in="formData",
-     * name="file",
+     * name="img",
      * type="file",
      * description="上传的文件",
      * required=true,
@@ -386,7 +386,7 @@ class UserController extends Controller
     public function imgUpload(Request $request)
     {
         // $this->jwtAuth();
-        $file = $request->file('file');
+        $file = $request->file('img');
         if ($file->getMimeType() != 'image/jpeg') {
             $this->response->errorForbidden('错误的文件类型');
         }
