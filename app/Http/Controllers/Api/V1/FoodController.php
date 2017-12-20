@@ -112,7 +112,7 @@ class FoodController extends Controller
         $food->status = $request->input('status');
         $food->save();
 
-        return $this->response()->array(['code'=>200, ' foodId'=>$food->id]);
+        return $this->response()->array(['code'=>200, 'foodId'=>$food->id]);
     }
 
     /**
