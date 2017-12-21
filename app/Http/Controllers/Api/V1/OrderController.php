@@ -230,7 +230,7 @@ class OrderController extends Controller
             DB::select('SELECT count(*) as value,status FROM `orders` WHERE date_str >= ? and date_str <= ? group BY status',
                 [$timeRange['st'], $timeRange['et']]);
         $res = [];
-        $status = ['1'=>'代付款', '2'=>'已结账', '3'=>'已取消'];
+        $status = ['1'=>'待付款', '2'=>'已结账', '3'=>'已取消'];
         foreach ($orders as $order) {
             $res[] = ['value'=>$order->value, 'name'=>$status[$order->status]];
         }
@@ -303,7 +303,7 @@ class OrderController extends Controller
     {
         $totalPrice = 0.0;
         //foods数组里应该有的字段
-        $needField = ['id', 'title', 'count', 'price'];
+        $needField = ['id', 'title', 'count', 'price', 'offprice'];
         foreach ($foodArr as $food) {
             //验证foodid是否存在
             $exists = Food::find($food['id']);
@@ -317,7 +317,11 @@ class OrderController extends Controller
                     return false;
                 }
             }
-            $totalPrice += $food['count']*$food['price'];
+            if ($food['offprice']< $food['price']) {
+                $totalPrice += $food['count']*$food['offprice'];                
+            } else {
+                $totalPrice += $food['count']*$food['price']; 
+            }
         }
         return $totalPrice;
     }

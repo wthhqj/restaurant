@@ -324,7 +324,8 @@ class FoodController extends Controller
             return response()->json(['code' => 40401, 'msg' => "参数错误"]);
         }
 
-        $foods = Food::where('status', 1)->paginate($request->input('limit'))->toArray();
+        // $foods = Food::where('status', 1)->paginate($request->input('limit'))->toArray();
+        $foods = Food::where('status', 1)->toArray();
 
         $count = Food::where('status', 1)->count();
         return $this->response->array(['code'=>200, 'total'=>$count, 'items'=> $foods["data"]]);
