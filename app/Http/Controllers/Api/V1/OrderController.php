@@ -191,14 +191,15 @@ class OrderController extends Controller
                 'id' => $list['id'],
                 'title' => $list['title'],
                 'quantity' => $list['count'],
-                'money' => $order->money,
                 'realPrice' => $list['offprice'],
-                'url' => $list['img']
+                'price' => $list['price'],
+                'url' => $list['img'],
+                'total' => $list['count'] * $list['offprice']
             );
         }
 
         return $this->response->array(['code'=>200, 'goodList'=> $goodList,
-            'status'=> $order->status , 'deskId'=>$order->desk_id]);
+            'status'=> $order->status , 'money' => $order->money , 'deskId'=>$order->desk_id]);
     }
 
     /**
@@ -299,7 +300,7 @@ class OrderController extends Controller
      * @return mixed
      */
     private function _valid($foodArr)
-    {
+    
         $totalPrice = 0.0;
         //foods数组里应该有的字段
         $needField = ['id', 'title', 'count', 'price'];
