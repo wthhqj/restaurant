@@ -327,7 +327,7 @@ class FoodController extends Controller
         $foods = Food::where('status', 1)->get()
             ->forPage($request->input('page'), $request->input('limit'));
 
-        $count = $query->count();
+        $count = Food::where('status', 1)->count();
         return $this->response->array(['code'=>200, 'total'=>$count, 'items'=> $foods]);
 
         // $allPage = Food::where('status', 1)->count();
