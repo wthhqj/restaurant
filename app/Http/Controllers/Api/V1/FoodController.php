@@ -323,12 +323,11 @@ class FoodController extends Controller
         if ($validator->fails()) {
             return response()->json(['code' => 40401, 'msg' => "参数错误"]);
         }
-;
-        $foods = Food::where('status', 1)->get()
-            ->forPage($request->input('page'), $request->input('limit'));
+
+        $foods = Food::where('status', 1)->paginate($request->input('limit'))->toArray();
 
         $count = Food::where('status', 1)->count();
-        return $this->response->array(['code'=>200, 'total'=>$count, 'items'=> $foods]);
+        return $this->response->array(['code'=>200, 'total'=>$count, 'items'=> $foods["data"]]);
 
         // $allPage = Food::where('status', 1)->count();
         // $allPage = ceil($allPage / $request->input('limit'));
