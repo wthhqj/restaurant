@@ -300,7 +300,7 @@ class OrderController extends Controller
      * @return mixed
      */
     private function _valid($foodArr)
-    
+    {
         $totalPrice = 0.0;
         //foods数组里应该有的字段
         $needField = ['id', 'title', 'count', 'price'];
