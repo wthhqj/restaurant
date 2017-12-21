@@ -192,8 +192,8 @@ class OrderController extends Controller
                 'title' => $list['title'],
                 'quantity' => $list['count'],
                 'money' => $order->money,
-                'unitPrice' => $list['price'],
-                'url' => $list['url']
+                'realPrice' => $list['offprice'],
+                'url' => $list['img']
             );
         }
 
