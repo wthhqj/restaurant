@@ -310,6 +310,10 @@ class OrderController extends Controller
             if (empty($exists)) {
                 return false;
             }
+            //增加点餐数
+            $updatefood = Food::find($food['id']);
+            $updatefood->ordernum = $updatefood->ordernum + $food['count'];
+            $updatefood->save();
             //遍历foods数组
             foreach($needField as $field) {
                 //遍历应该拥有的字段
