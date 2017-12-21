@@ -326,10 +326,14 @@ class FoodController extends Controller
 ;
         $foods = Food::where('status', 1)->get()
             ->forPage($request->input('page'), $request->input('limit'));
-        $allPage = Food::where('status', 1)->count();
-        $allPage = ceil($allPage / $request->input('limit'));
-        return $this->response
-            ->array(['code'=>200, 'allPage'=>$allPage,
-                'page'=>$request->input('page'), 'items'=> $foods]);
+
+        $count = $query->count();
+        return $this->response->array(['code'=>200, 'total'=>$count, 'items'=> $foods]);
+
+        // $allPage = Food::where('status', 1)->count();
+        // $allPage = ceil($allPage / $request->input('limit'));
+        // return $this->response
+        //     ->array(['code'=>200, 'allPage'=>$allPage,
+        //         'page'=>$request->input('page'), 'items'=> $foods]);
     }
 }
