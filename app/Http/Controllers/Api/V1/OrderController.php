@@ -67,6 +67,10 @@ class OrderController extends Controller
         if (empty($exists)) {
             return $this->response->array(['code'=>40403, 'msg'=> '餐桌号不存在']);
         }
+        // 修改餐桌的状态为有人
+        $desk = Desk::find($request->input('deskId'));
+        $desk->status = '1';
+        $desk->save();
 
         //验证foods格式并返回订单总价
         if (! $totalPrice = $this->_valid($request->input('foods'))) {
@@ -314,6 +318,7 @@ class OrderController extends Controller
             $updatefood = Food::find($food['id']);
             $updatefood->ordernum = $updatefood->ordernum + $food['count'];
             $updatefood->save();
+
             //遍历foods数组
             foreach($needField as $field) {
                 //遍历应该拥有的字段
