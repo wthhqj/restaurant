@@ -121,7 +121,7 @@ class UserController extends Controller
             $user->password = md5('123456');
             
         }
-        if ($requset->input('role') == '2') {
+        if ($request->input('role') == '2') {
             $user->role = array('employee');
         } else {
             $user->role = array('admin');
