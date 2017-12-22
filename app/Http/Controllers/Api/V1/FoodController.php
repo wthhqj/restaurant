@@ -327,7 +327,7 @@ class FoodController extends Controller
         // $foods = Food::where('status', 1)->paginate($request->input('limit'))->toArray();
         $foods = Food::where('status', 1)->get();
 
-        // $count = Food::where('status', 1)->count();
+        $count = Food::where('status', 1)->count();
         return $this->response->array(['code'=>200, 'total'=>$count, 'items'=> $foods]);
 
         // $allPage = Food::where('status', 1)->count();
