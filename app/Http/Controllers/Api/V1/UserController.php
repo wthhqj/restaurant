@@ -119,7 +119,6 @@ class UserController extends Controller
         } else {
             $user = new User();
             $user->password = md5('123456');
-            
         }
         if ($request->input('role') == '2') {
             $user->role = array('employee');
@@ -347,7 +346,7 @@ class UserController extends Controller
      */
     public function getList()
     {
-        $users = User::select('id as employeeId', 'name', 'age', 'mobile', 'salary')->get()->toArray();
+        $users = User::select('id as employeeId', 'name', 'age', 'mobile', 'salary', 'role')->get()->toArray();
         return $this->response->array(['code'=>200, 'totale'=>count($users), 'items'=>$users]);
     }
 
