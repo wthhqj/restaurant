@@ -119,15 +119,19 @@ class UserController extends Controller
         } else {
             $user = new User();
             $user->password = md5('123456');
+            
+        }
+        if ($requset->input('role') == '2') {
+            $user->role = array('employee');
+        } else {
+            $user->role = array('admin');
         }
 
         $user->mobile = $request->input('mobile');
         $user->name = $request->input('name');
         $user->age = $request->input('age');
         $user->salary = $request->input('salary');
-        // $user->avatar = asset('storage/upload/defaultheadimg.png');
         $user->avatar = "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif";
-        $user->role = array('employee');
         $user->save();
         return $this->response->array(array('code'=>200, 'id'=>$user->id));
     }
