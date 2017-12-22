@@ -115,7 +115,7 @@ class UserController extends Controller
             return $this->response->array(array('code'=>40301, 'msg'=>'手机号格式错误'));
         }
         if ($request->has('employeeId') ) {
-            $user = User::find($request->input('employeeid'));
+            $user = User::find($request->input('employeeId'));
         } else {
             $user = new User();
             $user->password = md5('123456');
