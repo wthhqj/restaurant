@@ -118,7 +118,7 @@ class UserController extends Controller
             $user = User::find($request->input('employeeid'));
         } else {
             $user = new User();
-            $user->password = '123456';
+            $user->password = md5('123456');
         }
 
         $user->mobile = $request->input('mobile');
