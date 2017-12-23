@@ -51,6 +51,8 @@ $api->version('v1', function ($api) {
         $api->get('order/list', ['as'=>'order.list', 'uses'=>'OrderController@getList']);
         /**获取订单详情*/
         $api->get('order/detail', ['as'=>'order.detail', 'uses'=>'OrderController@detail']);
+        /**修改订单状态和餐桌状态*/
+        $api->post('order/status', ['as'=>'order.status', 'uses'=>'OrderController@status']);
         /**获取一周的成交额*/
         $api->get('getMoneyInfo', ['as'=>'order.weekCount', 'uses'=>'OrderController@getMoneyInfo']);
         /**获取一周订单的数量*/

@@ -206,6 +206,30 @@ class OrderController extends Controller
             'status'=> $order->status , 'money' => $order->money , 'deskId'=>$order->desk_id]);
     }
 
+        /**
+     * 修改订单状态
+     * @SWG\Post(
+     * })
+     */
+    public function status(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'orderId' => 'required',
+            'status' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['code' => 40401, 'msg' => "参数错误"]);
+        }
+        $order = Order::find($request->input('orderId'));
+        $order->status = $request->input('status');
+        $order->save();
+
+        $desk = Desk::find($order->desk_id);
+        $desk->status = '0';
+        $desk->save();
+        return $this->response->array(['code'=>200]);
+    }
+
     /**
      * @SWG\Get(
      * path="getChartInfo",
