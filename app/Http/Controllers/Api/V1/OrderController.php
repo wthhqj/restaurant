@@ -258,7 +258,7 @@ class OrderController extends Controller
             DB::select('SELECT count(*) as value,status FROM `orders` WHERE date_str >= ? and date_str <= ? group BY status',
                 [$timeRange['st'], $timeRange['et']]);
         $res = [];
-        $status = ['1'=>'待付款', '2'=>'已结账', '3'=>'已取消'];
+        $status = ['1'=>'待付款', '2'=>'已取消', '3'=>'已结账'];
         foreach ($orders as $order) {
             $res[] = ['value'=>$order->value, 'name'=>$status[$order->status]];
         }
