@@ -138,7 +138,7 @@ class OrderController extends Controller
     {
         $page = $request->input('page', 1);
         $perPage = $request->input('limit', 10);
-        $st = $request->input('st', date('Y-m-d H:i:s',strtotime("-1 day")));
+        $st = $request->input('st', '1970-01-01');
         $et = $request->input('et', date('Y-m-d H:i:s'));
         $orders = Order::select('id as orderId', 'desk_id as deskId',
             'employee', 'money', 'status', 'created_at as timestamp')
@@ -304,7 +304,13 @@ class OrderController extends Controller
                 }
             }
         }
-        return $this->response->array(['code'=>200,'content'=>$orders]);
+
+        $content = []; 
+        foreach ($orders as $order) {
+            $content[] = $order['money'];
+        }
+
+        return $this->response->array(['code'=>200,'content'=>$content]);
     }
 
     /**
