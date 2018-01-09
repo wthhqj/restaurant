@@ -291,7 +291,7 @@ class OrderController extends Controller
         $timestamp = $request->input('time', date('Y-m-d'));
         $timeRange = $this->_getOneWeek($timestamp);
         $orders =
-            DB::select('SELECT sum(money) as money , date_str FROM `orders` WHERE date_str >= ? and date_str <= ?  AND  status=2 group BY date_str',
+            DB::select('SELECT sum(money) as money , date_str FROM `orders` WHERE date_str >= ? and date_str <= ?  AND  status=3 group BY date_str',
                 [$timeRange['st'], $timeRange['et']]);
         //冒泡有小到大
         $orders =  json_decode(json_encode($orders),TRUE);
